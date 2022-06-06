@@ -12,7 +12,13 @@ app.listen(PORT, () =>{
     console.log(`Listening on port ${PORT}`);
 });
 
+app.get('/', (req,res) => {
+    res.render('landingpage');
+})
 app.get('/login', (req,res) => {
     res.render('login');
+})
+app.get('/signup', (req,res) => {
+    res.render('signup');
 })
 
