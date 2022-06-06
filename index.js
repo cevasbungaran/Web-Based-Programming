@@ -21,4 +21,9 @@ app.get('/login', (req,res) => {
 app.get('/signup', (req,res) => {
     res.render('signup');
 })
-
+app.get('/homepage', (req,res) => {
+    res.render('homepage');
+})
+app.get('/mythreads', (req,res) => {
+    res.render('mythreads');
+})
