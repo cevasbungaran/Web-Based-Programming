@@ -2,18 +2,17 @@
 <html lang="en">
 
     <script>
-        console.log(localStorage.getItem('user'))
         //api yang digunakan
         const api_url = 
               "http://localhost:8082/homepageget/";
         //variable pagination
-        var slice=1
+        let slice=1
         //variable search
-        var val=""
+        let val=""
 
         // function untuk dapetin thread
         async function getapi(url,slice,val) {
-            var searchtag = val;
+            let searchtag = val;
             const response = await fetch(api_url+searchtag,{
                 method: 'GET',
                 headers: {
@@ -21,10 +20,10 @@
                 'Content-Type': 'application/json'
                 }
             });
-            var data = await response.json();
+            let data = await response.json();
             //buat dapetin panjang pagination
-            var dat_len=data.length
-            var pag= dat_len/5
+            let dat_len=data.length
+            let pag= dat_len/5
             //buat button pagination
             pagination(pag+1,data)
             
@@ -36,7 +35,7 @@
         }
 
         function search(){
-            var val=document.getElementById('search').value
+            let val=document.getElementById('search').value
            
             getapi(api_url,1,val)
         }
@@ -45,7 +44,7 @@
 
         function pagination(length,data){
             let tab=``;
-            var val=document.getElementById('search').value
+            let val=document.getElementById('search').value
             //buat button pagination sesuai value yg diketik di search
             for (let i = 1; i < length; i++) {
               tab+=`<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
@@ -82,9 +81,6 @@
             document.getElementById("threadArray").innerHTML = tab;
         }
 
-        // const paginate = (array, pageSize, pageNumber) => {
-        //     return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-        // }
         
     </script>
 <head>

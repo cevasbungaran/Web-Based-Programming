@@ -1,93 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <script>
-        const api_url = 
-              "http://localhost:8082/myhomepageget/";
+<script>
+    const api_url =
+        "http://localhost:8082/myhomepageget/";
 
-          var slice=1
-          var val=""
+    let slice = 1
+    let val = ""
 
-        // Defining async function
-        async function getapi(url,slice,val) {
-            // Storing response
-            var searchtag = val;
-            var name= localStorage.getItem('user')
-            const response = await fetch(api_url+name+'/'+searchtag,{
-                method: 'GET',
-                headers: {
+
+    async function getapi(url, slice, val) {
+        let searchtag = val;
+        let name = localStorage.getItem('user')
+        //console.log(name)
+        const response = await fetch(api_url + name + '/' + searchtag, {
+            method: 'GET',
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                }
-            });
-            
-            // Storing data in form of JSON
-            var data = await response.json();
-            var dat_len=data.length
-            var pag= dat_len/5
-            pagination(pag+1,data)
-            
-            if (response) {
-                hideloader();
             }
+        });
 
-            show(data,slice);
+
+        let data = await response.json();
+        let dat_len = data.length
+        let pag = dat_len / 5
+        pagination(pag + 1, data)
+
+        if (response) {
+            hideloader();
         }
 
-        function search(){
-            var val=document.getElementById('search').value
-           
-            getapi(api_url,1,val)
+        show(data, slice);
+    }
+
+    function search() {
+        let val = document.getElementById('search').value
+
+        getapi(api_url, 1, val)
+    }
+
+    getapi(api_url, slice, val);
+
+    function pagination(length, data) {
+        let tab = ``;
+        let val = document.getElementById('search').value
+        for (let i = 1; i < length; i++) {
+            tab += `<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+
         }
 
-        getapi(api_url,slice,val);
+        document.getElementById("pagination").innerHTML = tab;
+    }
 
-        function pagination(length,data){
-            let tab=``;
-            var val=document.getElementById('search').value
-            for (let i = 1; i < length; i++) {
-              tab+=`<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
-                
-            }
+    // Calling that async function
 
-            document.getElementById("pagination").innerHTML = tab;
-        }
-        
-        // Calling that async function
-          
-        // Function to hide the loader
-        function hideloader() {
-            document.getElementById('loading').style.display = 'none';
-        }
-        // Function to define innerHTML for HTML table
-        function show(data,i) {
-            data=data.slice(5*(i-1),5*(i))
-            let tab = 
-                `<tr>
+    // Function to hide the loader
+    function hideloader() {
+        document.getElementById('loading').style.display = 'none';
+    }
+    // Function to define innerHTML for HTML table
+    function show(data, i) {
+        data = data.slice(5 * (i - 1), 5 * (i))
+        let tab =
+            `<tr>
                   <th>Title</th>
                   <th>Category</th>
                   <th>Created By</th>
                   <th>Created Date</th>
                  </tr>`;
-            
-            // Loop to access all rows 
-            for (let r of data) {
-                tab += `<tr> 
+
+        // Loop to access all rows 
+        for (let r of data) {
+            tab += `<tr> 
             <td>${r.title} </td>
             <td>${r.category}</td>
             <td>${r.usrname}</td> 
             <td>${r.creat}</td>          
         </tr>`;
-            }
-            // Setting innerHTML as tab variable
-            document.getElementById("employees").innerHTML = tab;
         }
+        // Setting innerHTML as tab variable
+        document.getElementById("threadArray").innerHTML = tab;
+    }
 
-        const paginate = (array, pageSize, pageNumber) => {
-            return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-        }
-        
-    </script>
+    const paginate = (array, pageSize, pageNumber) => {
+        return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+    }
+
+</script>
+
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
@@ -112,23 +113,21 @@
             <i class="fa fa-user"></i>
         </div>
     </header>
+
     <body>
         <div class="d-flex justify-content-center">
-            <div class="spinner-border" 
-                 role="status" id="loading">
+            <div class="spinner-border" role="status" id="loading">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
         <h1>My Thread</h1>
-        <div> 
+        <div>
             <input type="text" id="search" name="search" onkeyup="search()">
         </div>
-        <table id="employees"></table>
+        <table id="threadArray"></table>
         <div id="pagination"></div>
-        
-</body>
 
-    
+    </body>
+
+
 </html>
-
-
