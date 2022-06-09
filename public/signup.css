@@ -1,0 +1,7 @@
+html{
+    position: relative;
+}
+#bod{
+    text-align: center;
+    border: 3px solid green;
+}

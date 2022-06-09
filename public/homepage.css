@@ -1,0 +1,32 @@
+html{
+    position: relative;
+}
+#bod{
+    text-align: center;
+    border: 3px solid green;
+}
+#content{
+    border: solid;
+    border-radius: 2px;
+    border-color: bisque;
+    margin-bottom: 2px;
+}
+#searc{
+   text-align: center;
+   margin-bottom: 5px;
+}
+#title{
+    text-align: center;
+}
+#date{
+    text-align: right;
+}
+#name{
+    text-align: right;
+}
+#category{
+    text-align: left;
+}
+#urcom{
+    text-align: left;
+}

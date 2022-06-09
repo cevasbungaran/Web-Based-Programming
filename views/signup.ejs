@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="/signup.css"  />
     <meta charset="UTF-8">
     <title>Sign Up</title>
 </head>
-<body>
+<body id="bod">
     <h1>KusKus</h1>
-    <form method="post" action="/login">
-        <input type="text" name="username" placeholder="Username"> <br>
-        <input type="password" name="password" placeholder="Password"> <br>
-        <input type="password" name="password" placeholder="Retype Password"> <br>
+    <form method="post" action="/signup" >
+        <input type="text" name="username" placeholder="Username" value=""> <br>
+        <input type="password" name="password" placeholder="Password" value=""> <br>
+        <input type="password" name="repassword" placeholder="Retype Password" value=""> <br>
         <button>Sign Up</button>
     </form>
 </body>

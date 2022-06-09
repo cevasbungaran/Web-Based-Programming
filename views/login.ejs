@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" type="text/css" href="/login.css"  />
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
-<body>
+<body id="bod">
     <h1>KusKus</h1>
-    <form method="post" action="/login">
-        <input type="text" name="username" placeholder="Username"> <br>
+    <form method="get" action="/logincheck">
+        <input type="text" name="username" id="username" placeholder="Username"> <br>
         <input type="password" name="password" placeholder="Password"> <br>
-        <button>Login</button>
-        <a href="/signup">
-            <p>Create Account</p>
-        </a>
+        <button onClick="setSession()">Login</button>
+     
     </form>
+    <a href="/signup">
+        <p>Create Account</p>
+    </a>
 </body>
 </html>
+<script>
+function setSession(){
+localStorage.setItem('user',document.getElementById('username').value);
+}
+</script>
