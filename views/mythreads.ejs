@@ -53,13 +53,11 @@
         document.getElementById("pagination").innerHTML = tab;
     }
 
-    // Calling that async function
 
-    // Function to hide the loader
     function hideloader() {
         document.getElementById('loading').style.display = 'none';
     }
-    // Function to define innerHTML for HTML table
+
     function show(data, i) {
         data = data.slice(5 * (i - 1), 5 * (i))
         let tab =
@@ -70,7 +68,7 @@
                   <th>Created Date</th>
                  </tr>`;
 
-        // Loop to access all rows 
+
         for (let r of data) {
             tab += `<tr> 
             <td>${r.title} </td>
@@ -79,21 +77,18 @@
             <td>${r.creat}</td>          
         </tr>`;
         }
-        // Setting innerHTML as tab variable
+
         document.getElementById("threadArray").innerHTML = tab;
     }
 
-    const paginate = (array, pageSize, pageNumber) => {
-        return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-    }
+    
 
 </script>
 
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="../public/style.css">
-    <link rel="stylesheet" type="text/css" href="../public/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="">
 </head>
 
 <body>
