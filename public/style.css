@@ -1,4 +1,49 @@
-.landingPageContent{
-    text-align: center;
+.landingPageContent {
     padding-top: 100px;
+    text-align: center;
 }
+
+h1{
+    font-size: 90pt;
+    font-family: 'Italianno', cursive;
+    margin-bottom: 0px;
+}
+
+.button{
+    padding-bottom: 80px;
+}
+
+#login {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+#login:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+#signup {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+#signup:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+/* Rectangle 1 */
+
+/* position: absolute;
+width: 300px;
+height: 90px;
+left: 570px;
+top: 576px;
+
+background: #FFFFFF;
+border: 5px solid #000000; */

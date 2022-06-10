@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <script>
-        //api yang digunakan
-        const api_url = 
-              "http://localhost:8082/homepageget/";
-        //variable pagination
-        let slice=1
-        //variable search
-        let val=""
+<script>
+    //api yang digunakan
+    const api_url =
+        "http://localhost:8082/homepageget/";
+    //variable pagination
+    let slice = 1
+    //variable search
+    let val = ""
 
-        // function untuk dapetin thread
-        async function getapi(url,slice,val) {
-            let searchtag = val;
-            const response = await fetch(api_url+searchtag,{
-                method: 'GET',
-                headers: {
+    // function untuk dapetin thread
+    async function getapi(url, slice, val) {
+        let searchtag = val;
+        const response = await fetch(api_url + searchtag, {
+            method: 'GET',
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-                }
-            });
-            let data = await response.json();
-            //buat dapetin panjang pagination
-            let dat_len=data.length
-            let pag= dat_len/5
-            //buat button pagination
-            pagination(pag+1,data)
-            
-            if (response) {
-                hideloader();
             }
+        });
+        let data = await response.json();
+        //buat dapetin panjang pagination
+        let dat_len = data.length
+        let pag = dat_len / 5
+        //buat button pagination
+        pagination(pag + 1, data)
 
-            show(data,slice);
+        if (response) {
+            hideloader();
         }
 
-        function search(){
-            let val=document.getElementById('search').value
-           
-            getapi(api_url,1,val)
+        show(data, slice);
+    }
+
+    function search() {
+        let val = document.getElementById('search').value
+
+        getapi(api_url, 1, val)
+    }
+
+    getapi(api_url, slice, val);
+
+    function pagination(length, data) {
+        let tab = ``;
+        let val = document.getElementById('search').value
+        //buat button pagination sesuai value yg diketik di search
+        for (let i = 1; i < length; i++) {
+            tab += `<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+
         }
 
-        getapi(api_url,slice,val);
+        document.getElementById("pagination").innerHTML = tab;
+    }
 
-        function pagination(length,data){
-            let tab=``;
-            let val=document.getElementById('search').value
-            //buat button pagination sesuai value yg diketik di search
-            for (let i = 1; i < length; i++) {
-              tab+=`<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
-                
-            }
 
-            document.getElementById("pagination").innerHTML = tab;
-        }
-        
-          
-        function hideloader() {
-            document.getElementById('loading').style.display = 'none';
-        }
-        function show(data,i) {
-            data=data.slice(5*(i-1),5*(i))
-            let tab = 
-                ``;
-            
-            for (let r of data) {
-                tab += `<div id="content"> 
+    function hideloader() {
+        document.getElementById('loading').style.display = 'none';
+    }
+    function show(data, i) {
+        data = data.slice(5 * (i - 1), 5 * (i))
+        let tab =
+            ``;
+
+        for (let r of data) {
+            tab += `<div id="content"> 
                     
             <div id="category">${r.category}</div>
             <div id="title">${r.title} </div>
@@ -76,22 +76,26 @@
             <input type="text" id="urcom" name="comment">
             </div>    
             </div>`;
-            }
-            
-            document.getElementById("threadArray").innerHTML = tab;
         }
 
-        
-    </script>
+        document.getElementById("threadArray").innerHTML = tab;
+    }
+
+
+</script>
+
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="/homepage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <h1>KusKus</h1>
+        <h1 id="kuskus">KusKus</h1>
         <a href="/homepage">
             <h3>Home</h3>
         </a>
@@ -101,28 +105,22 @@
         <a href="/login">
             <h3>Log Out</h3>
         </a>
-        <div class="icon">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-user"></i>
-        </div>
     </header>
+
     <body>
         <div class="d-flex justify-content-center">
-            <div class="spinner-border" 
-                 role="status" id="loading">
+            <div class="spinner-border" role="status" id="loading">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
         <h1>Thread</h1>
-        <div id="searc"> 
+        <div id="searc">
             <input type="text" id="search" name="search" placeholder="Find Threads" onkeyup="search()">
         </div>
         <div id="threadArray"></div>
         <div id="pagination"></div>
-        
-</body>
 
-    
+    </body>
+
+
 </html>
-
-

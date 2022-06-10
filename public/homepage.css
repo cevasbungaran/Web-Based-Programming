@@ -1,9 +1,15 @@
-html{
-    position: relative;
+header{
+    /* background-color: #c2281d; */
+    
+    display: flex;
+    justify-content: space-around;
+    /* font-family: sans-serif; */
+    padding-left: 0px;
 }
-#bod{
-    text-align: center;
-    border: 3px solid green;
+#kuskus{
+    font-family: 'Italianno', cursive;
+    font-size: 30pt;
+    margin-bottom: 0;
 }
 #content{
     border: solid;

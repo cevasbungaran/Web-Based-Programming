@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" type="text/css" href="/signup.css"  />
+    <link rel="stylesheet" type="text/css" href="/signup.css" />
+    <link rel="stylesheet" type="text/css" href="/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Sign Up</title>
 </head>
+
 <body id="bod">
     <h1>KusKus</h1>
-    <form method="post" action="/signup" >
-        <input type="text" name="username" placeholder="Username" value=""> <br>
-        <input type="password" name="password" placeholder="Password" value=""> <br>
-        <input type="password" name="repassword" placeholder="Retype Password" value=""> <br>
+    <form method="post" action="/signup">
+        <input type="text" name="username" id="username" placeholder="Username" value="">
+        <br>
+        <br>
+        <input type="password" name="password" id="pass" placeholder="Password" value="">
+        <br>
+        <br>
+        <input type="password" name="repassword" id="repass" placeholder="Retype Password" value="">
+        <br>
+        <br>
         <button>Sign Up</button>
     </form>
 </body>
+
 </html>
