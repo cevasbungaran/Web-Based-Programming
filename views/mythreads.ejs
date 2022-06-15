@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link rel="stylesheet" type="text/css" href="/mythread.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <script type="text/javascript" src= "/mythread.js"></script>
 </head>
-
 <body>
     <header>
-        <h1>KusKus</h1>
+        <h1 id="namaWeb">KusKus</h1>
         <a href="/homepage">
             <h3>Home</h3>
         </a>
@@ -25,21 +27,21 @@
             <i class="fa fa-user"></i>
         </div>
     </header>
-
     <body>
         <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status" id="loading">
+            <div class="spinner-border" 
+                 role="status" id="loading">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <h1>My Threads</h1>
-        <div>
+        <h1>My Thread</h1>
+        <div> 
             <input type="text" id="search" name="search" onkeyup="search()">
         </div>
         <table id="threadArray"></table>
         <div id="pagination"></div>
-
-    </body>
+        
+</body>
 
 
 </html>

@@ -1,21 +1,41 @@
 header{
-    /* background-color: #c2281d; */
-    
     display: flex;
     justify-content: space-around;
-    /* font-family: sans-serif; */
+    padding-right: 100px;
     padding-left: 0px;
+    margin-left: 0px;
+    padding-top: 10px;
+    /* background-image: url(/headerback.jpg); */
 }
-#kuskus{
+header a{
+    text-decoration: none;
+    color: black;
+    padding-top: 5px;
+    font-size: 15pt;
+}
+header a:hover{
+    color: rgb(157, 138, 63);
+}
+#namaWeb{
     font-family: 'Italianno', cursive;
-    font-size: 30pt;
-    margin-bottom: 0;
+    font-size: 50pt;
+    padding-top: 0px;
+    margin-top: 0px;
 }
 #content{
     border: solid;
-    border-radius: 2px;
-    border-color: bisque;
-    margin-bottom: 2px;
+    border-radius: 3px;
+    border-color: black;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+#commentus{
+    text-align: center;
+    margin-top: 0px;
+    border: solid 2px;
+    border-radius: 1px;
+    border-color: black;
+    padding: 5px;
 }
 #searc{
    text-align: center;
@@ -23,16 +43,19 @@ header{
 }
 #title{
     text-align: center;
+    font-family: 'Italianno', cursive;
+    font-size: 30pt;
 }
 #date{
-    text-align: right;
+    text-align: center;
+    margin-top: 5px;
 }
 #name{
-    text-align: right;
+    text-align: center;
 }
 #category{
     text-align: left;
 }
 #urcom{
-    text-align: left;
+    float: right;
 }

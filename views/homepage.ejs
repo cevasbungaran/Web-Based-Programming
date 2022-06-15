@@ -10,10 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <script type="text/javascript" src= "/homepage.js"></script>
 </head>
-
 <body>
     <header>
-        <h1 id="kuskus">KusKus</h1>
+        <h1 id="namaWeb">KusKus</h1>
         <a href="/homepage">
             <h3>Home</h3>
         </a>
@@ -23,22 +22,34 @@
         <a href="/login">
             <h3>Log Out</h3>
         </a>
+        <div class="icon">
+            <i class="fa fa-search"></i>
+            <i class="fa fa-user"></i>
+        </div>
     </header>
-
     <body>
         <div class="d-flex justify-content-center">
-            <div class="spinner-border" role="status" id="loading">
+            <div class="spinner-border" 
+                 role="status" id="loading">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <h1>Thread</h1>
-        <div id="searc">
+        <h1 id="h1page">Thread</h1>
+        <div id="make"> 
+            <label for="yourthread">Post Thread</label>
+            <br>
+            <select name="category" id="category"></select>
+            <br>
+            <textarea id="yourthread" name="textthread" rows="4" cols="50"></textarea>
+            <br>
+            <button onClick="postthread()">Submit</button>
+        </div>
+        <div id="searc"> 
             <input type="text" id="search" name="search" placeholder="Find Threads" onkeyup="search()">
         </div>
-        <div id="threadArray"></div>
+        <div id="threadArray">
+        </div>
         <div id="pagination"></div>
-
-    </body>
-
+</body>
 
 </html>

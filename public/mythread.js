@@ -1,77 +1,79 @@
 const api_url =
-        "http://localhost:8082/myhomepageget/";
+    "http://localhost:8082/myhomepageget/";
 
-    let slice = 1
-    let val = ""
-
-    async function getapi(url, slice, val) {
-        let searchtag = val;
-        let name = localStorage.getItem('user')
-        //console.log(name)
-        const response = await fetch(api_url + name + '/' + searchtag, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
+var slice = 1
+var val = ""
 
 
-        let data = await response.json();
-        let dat_len = data.length
-        let pag = dat_len / 5
-        pagination(pag + 1, data)
+async function getapi(url, slice, val) {
 
-        if (response) {
-            hideloader();
+    var searchtag = val;
+    var name = localStorage.getItem('user')
+    const response = await fetch(api_url + name + '/' + searchtag, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         }
+    });
 
-        show(data, slice);
+    var data = await response.json();
+    var dat_len = data.length
+    var pag = dat_len / 5
+    pagination(pag + 1, data)
+
+    if (response) {
+        hideloader();
     }
 
-    function search() {
-        let val = document.getElementById('search').value
+    show(data, slice);
+}
 
-        getapi(api_url, 1, val)
+function search() {
+    var val = document.getElementById('search').value
+
+    getapi(api_url, 1, val)
+}
+
+getapi(api_url, slice, val);
+
+function pagination(length, data) {
+    let tab = ``;
+    var val = document.getElementById('search').value
+    for (let i = 1; i < length; i++) {
+        tab += `<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+
     }
 
-    getapi(api_url, slice, val);
+    document.getElementById("pagination").innerHTML = tab;
+}
 
-    function pagination(length, data) {
-        let tab = ``;
-        let val = document.getElementById('search').value
-        for (let i = 1; i < length; i++) {
-            tab += `<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+function hideloader() {
+    document.getElementById('loading').style.display = 'none';
+}
 
-        }
-
-        document.getElementById("pagination").innerHTML = tab;
-    }
-
-
-    function hideloader() {
-        document.getElementById('loading').style.display = 'none';
-    }
-
-    function show(data, i) {
-        data = data.slice(5 * (i - 1), 5 * (i))
-        let tab =
-            `<tr>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Created By</th>
-                  <th>Created Date</th>
-                 </tr>`;
-
-
-        for (let r of data) {
-            tab += `<tr> 
-            <td>${r.title} </td>
-            <td>${r.category}</td>
-            <td>${r.usrname}</td> 
-            <td>${r.creat}</td>          
+function show(data, i) {
+    data = data.slice(5 * (i - 1), 5 * (i))
+    let tab =
+        `<tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Created By</th>
+            <th>Created Date</th>
         </tr>`;
-        }
 
-        document.getElementById("threadArray").innerHTML = tab;
+    for (let r of data) {
+        tab += `<tr> 
+                <td>${r.title} </td>
+                <td>${r.category}</td>
+                <td>${r.usrname}</td> 
+                <td>${r.creat}</td>          
+                </tr>`;
     }
+
+    document.getElementById("threadArray").innerHTML = tab;
+}
+
+// const paginate = (array, pageSize, pageNumber) => {
+//     return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+// }
