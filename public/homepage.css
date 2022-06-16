@@ -1,74 +1,119 @@
-header{
+header {
     display: flex;
     justify-content: space-around;
     padding-right: 100px;
     padding-left: 0px;
     margin-left: 0px;
     padding-top: 10px;
-    /* background-image: url(/headerback.jpg); */
 }
-header a{
+
+header a {
     text-decoration: none;
     color: black;
     padding-top: 5px;
     font-size: 15pt;
 }
-header a:hover{
+
+header a:hover {
     color: rgb(157, 138, 63);
 }
-#namaWeb{
+
+#namaWeb {
     font-family: 'Italianno', cursive;
     font-size: 50pt;
     padding-top: 0px;
     margin-top: 0px;
 }
-#h1page{
+
+#h1page {
     text-align: center;
 }
-#submit{
+
+#submit {
     background: #FFFFFF;
     border: 2px solid #000000;
-    width: 100px;
+    width: 90px;
     height: 30px;
-    border-radius: 7px;
+    border-radius: 5px;
 }
-#submit:hover{
-    background-color: rgb(177, 177, 177);
+
+#submit:hover {
+    background-color: rgb(210, 210, 210);
 }
-#content{
+
+#content {
     border: solid;
     border-radius: 3px;
     border-color: black;
     margin-bottom: 30px;
     padding: 5px;
 }
-#commentus{
-    text-align: center;
-    margin-top: 0px;
+
+#commentus {
+    text-align: left;
+    /* margin-top: 0px;
     border: solid 2px;
     border-radius: 1px;
-    border-color: black;
-    padding: 5px;
+    border-color: black; */
+    padding-top: 5px;
 }
-#searc{
-   text-align: center;
-   margin-bottom: 5px;
+
+#send{
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
 }
-#title{
+
+#send:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+#searchBar {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#search {
+    width: 215px;
+    height: 28px;
+    border-radius: 3px;
+}
+
+#pagination {
+    display: inline-block;
+    padding-bottom: 10px;
+    padding-left: 672px;
+}
+
+#page {
+    background-color: white;
+    border: solid black 1px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#page:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+#title {
     text-align: center;
     font-family: 'Italianno', cursive;
     font-size: 30pt;
 }
-#date{
+
+#date {
     text-align: center;
     margin-top: 5px;
 }
-#name{
+
+#name {
     text-align: center;
 }
-#category{
+
+#category {
     text-align: left;
 }
-/* #urcom{
-    font-size: 80pt;
-} */

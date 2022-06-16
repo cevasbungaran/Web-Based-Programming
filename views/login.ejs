@@ -6,17 +6,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <script type="text/javascript" src= "/login.js"></script>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 
 <body id="bod">
     <h1>KusKus</h1>
-    <form method="get" action="/logincheck">
-        <input type="text" name="username" id="username" placeholder="Username">
+    <form name="loginFrom" method="get" action="/logincheck">
+        <input type="text" name="username" id="username" placeholder="Username" required>
         <br>
         <br>
-        <input type="password" name="password" id="pass" placeholder="Password">
+        <input type="password" name="password" id="pass" placeholder="Password" required>
         <br>
         <br>
         <button onClick="setSession()" id="login">Login</button>

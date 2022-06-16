@@ -22,10 +22,6 @@
         <a href="/login">
             <h3>Log Out</h3>
         </a>
-        <div class="icon">
-            <i class="fa fa-search"></i>
-            <i class="fa fa-user"></i>
-        </div>
     </header>
     <body>
         <div class="d-flex justify-content-center">
@@ -35,10 +31,13 @@
             </div>
         </div>
         <h1 id="h1page">My Thread</h1>
-        <div> 
-            <input type="text" id="search" name="search" onkeyup="search()">
+        <div id="searchBar"> 
+            <input type="text" id="search" name="search" onkeyup="search()" placeholder="Find your threads">
         </div>
+        <br>
+        <br>
         <table id="threadArray"></table>
+        <br>
         <div id="pagination"></div>
         
 </body>

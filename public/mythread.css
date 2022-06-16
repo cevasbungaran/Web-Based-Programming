@@ -1,4 +1,4 @@
-header{
+header {
     display: flex;
     justify-content: space-around;
     padding-right: 100px;
@@ -7,34 +7,84 @@ header{
     padding-top: 10px;
     /* background-image: url(/headerback.jpg); */
 }
-header a{
+
+header a {
     text-decoration: none;
     color: black;
     padding-top: 5px;
     font-size: 15pt;
 }
-header a:hover{
+
+header a:hover {
     color: rgb(157, 138, 63);
 }
-#namaWeb{
+
+#namaWeb {
     font-family: 'Italianno', cursive;
     font-size: 50pt;
     padding-top: 0px;
     margin-top: 0px;
 }
-#h1page{
+
+#h1page {
     text-align: center;
 }
-#content{
+
+#content {
     border: solid;
     border-radius: 2px;
     border-color: bisque;
     margin-bottom: 2px;
 }
-#searc{
-   text-align: center;
-   margin-bottom: 5px;
+
+#threadArray {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
+
+#threadArray td,
+#threadArray th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#threadArray th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+}
+
+#searchBar {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#search {
+    width: 215px;
+    height: 28px;
+    border-radius: 3px;
+}
+
+#pagination {
+    display: inline-block;
+    padding-bottom: 10px;
+    padding-left: 672px;
+}
+
+#page {
+    background-color: white;
+    border: solid black 1px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#page:hover {
+    background-color: rgb(210, 210, 210);
+}
+
+/*
 #title{
     text-align: center;
 }
@@ -49,4 +99,4 @@ header a:hover{
 }
 #urcom{
     text-align: left;
-}
+} */

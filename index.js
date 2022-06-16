@@ -3,6 +3,7 @@ import path from 'path'
 import mysql from 'mysql'
 import {fileURLToPath} from 'url';
 import bodyParser from 'body-parser'
+import fileUpload from 'express-fileupload';
 
 
 const app = express();
@@ -28,7 +29,7 @@ app.listen(PORT, () =>{
     console.log(`Listening on port ${PORT}`);
 });
 //////////CONECT DB////////////
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
@@ -66,7 +67,7 @@ app.get('/mythreads', (req,res) => {
 })
 app.post('/signup', (req,res) => {
     
-    var sql = `INSERT INTO users (name, password, joined_date) VALUES ('${req.body.username}','${req.body.password}','${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`
+    let sql = `INSERT INTO users (name, nickname, email, password, joined_date) VALUES ('${req.body.username}','${req.body.nickname}','${req.body.email}','${req.body.password}','${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`
     connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("1 record inserted");
@@ -75,13 +76,13 @@ app.post('/signup', (req,res) => {
 })
 
 app.post('/threadpost', (req,res) => {
-    var sql2 = `(select id from users where name='${req.body.name}')`
-    var id=0
+    let sql2 = `(select id from users where name='${req.body.name}')`
+    let id=0
     connection.query(sql2, function (err, result) {
         if (err) throw err;
         id=result[0].id
   
-        var sql = `INSERT INTO threads (title, author_id, category_id, created_date) VALUES ('${req.body.title}','${id}','${req.body.category}','${new Date().toISOString().slice(0, 19).replace('T', ' ')}')`
+        let sql = `INSERT INTO threads (title, author_id, category_id, created_date) VALUES ('${req.body.title}','${id}','${req.body.category}','${new Date().toISOString().slice(0, 19).replace('T', ' ')}}')`
         connection.query(sql, function (err, result) {
            if (err) throw err;  
            console.log("1 record inserted");
@@ -91,7 +92,7 @@ app.post('/threadpost', (req,res) => {
 })
 
 app.post('/subcomment', (req,res) => {
-        var sql = `INSERT INTO thread_contents (content, like_count, created_date,thread_id) VALUES ('${req.body.content}','0','${new Date().toISOString().slice(0, 19).replace('T', ' ')}','${req.body.idThread}')`
+        let sql = `INSERT INTO thread_contents (content, like_count, created_date,thread_id) VALUES ('${req.body.content}','0','${new Date().toISOString().slice(0, 19).replace('T', ' ')}','${req.body.idThread}')`
         connection.query(sql, function (err, result) {
            if (err) throw err;  
            console.log("1 record inserted");
@@ -100,7 +101,7 @@ app.post('/subcomment', (req,res) => {
 })
 
 app.get('/threadcomment/*', (req,res) => {
-        var sql = `(select * from thread_contents where thread_id=${req.params[0]})`
+        let sql = `(select * from thread_contents where thread_id=${req.params[0]})`
         connection.query(sql, function (err, result) {
            if (err) throw err;  
            res.send(result)
@@ -112,7 +113,7 @@ app.get('/threadcomment/*', (req,res) => {
 
 app.get('/logincheck', (req,res) => {
    
-    var sql = `(SELECT count(users.id) as jumlah from users where name='${req.query.username}' and password='${req.query.password}')`
+    let sql = `(SELECT count(users.id) as jumlah from users where name='${req.query.username}' and password='${req.query.password}')`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         if(result[0].jumlah>0){
@@ -125,11 +126,11 @@ app.get('/logincheck', (req,res) => {
 })
 
 app.get('/homepageget/*', (req,res) => {
-    var value=req.params[0]
+    let value=req.params[0]
     if (req.params[0]==undefined){
         value='';
     }
-    var sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%')`
+    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%')`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         res.send(result)
@@ -137,7 +138,7 @@ app.get('/homepageget/*', (req,res) => {
 })
 
 app.get('/threadcategory', (req,res) => {
-    var sql = `(SELECT * from thread_categories)`
+    let sql = `(SELECT * from thread_categories)`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         res.send(result)
@@ -145,14 +146,14 @@ app.get('/threadcategory', (req,res) => {
 })
 
 app.get('/myhomepageget/*', (req,res) => {
-    var par=req.params[0]
+    let par=req.params[0]
     const arr=par.split("/")
-    var name=arr[0]
-    var value=arr[1]
+    let name=arr[0]
+    let value=arr[1]
    if (req.params[0]==undefined){
         value='';
     }
-    var sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%' and users.name='${name}')`
+    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%' and users.name='${name}')`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         res.send(result)

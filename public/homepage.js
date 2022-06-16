@@ -13,15 +13,15 @@ const api_subComment =
 
 //variabel default///////////////     
 //pagination
-var slice=1
+let slice=1
 //find
-var val=""
+let val=""
 //////////////////
 
 //function untuk post thread
 async function postthread() {
-    var val=document.getElementById("yourthread").value
-    var selval=document.getElementById("category").value
+    let val=document.getElementById("yourthread").value
+    let selval=document.getElementById("category").value
 
     const response = await fetch(api_post,{
     method: 'POST',
@@ -40,9 +40,9 @@ async function postthread() {
 
 //function untuk submit comment
 async function submitComment(idThread) {
-    var val=document.getElementById(`urcom+${idThread}`).value
-    var vals=document.getElementById('search').value
-    var i=(parseInt(idThread/5, 10))+1;
+    let val=document.getElementById(`urcom+${idThread}`).value
+    let vals=document.getElementById('search').value
+    let i=(parseInt(idThread/5, 10))+1;
     console.log(i) 
     const response = await fetch(api_subComment,{
         method: 'POST',
@@ -60,7 +60,7 @@ async function submitComment(idThread) {
 ///function untuk dapet semua category thread di db
 async function getcategory() {
     // Storing response
-    var searchtag = val;
+    let searchtag = val;
     const response = await fetch(api_category,{
         method: 'GET',
         headers: {
@@ -69,7 +69,7 @@ async function getcategory() {
         }
     });
 
-    var data = await response.json();
+    let data = await response.json();
     let tab=``;
     for (let i = 0; i < data.length; i++) {
         tab+=`<option value='${data[i].id}'>${data[i].name}</option>`
@@ -82,7 +82,7 @@ async function getcategory() {
 
 // function untuk dapetin thread
 async function getapi(url,slice,val) {
-    var searchtag = val;
+    let searchtag = val;
     const response = await fetch(api_url+searchtag,{
     method: 'GET',
     headers: {
@@ -90,11 +90,11 @@ async function getapi(url,slice,val) {
         'Content-Type': 'application/json'
     }
     });
-    var data = await response.json();
+    let data = await response.json();
     //buat pagination
     //dapetin panjang data
-    var dat_len=data.length
-    var pag= dat_len/5
+    let dat_len=data.length
+    let pag= dat_len/5
     //buat button pagination
     pagination(pag+1,data)
     ////
@@ -107,7 +107,7 @@ async function getapi(url,slice,val) {
 
 ///////////manggil method search sekali keyup di input box   
 function search(){
-    var val=document.getElementById('search').value
+    let val=document.getElementById('search').value
 
     getapi(api_url,1,val)
 }
@@ -118,9 +118,9 @@ function search(){
 //function untuk ngatur pagination
 function pagination(length,data){
     let tab=``;
-    var val=document.getElementById('search').value
+    let val=document.getElementById('search').value
     for (let i = 1; i < length; i++) {
-        tab+=`<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+        tab+=`<button id="page" onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
     
     }
 
@@ -146,7 +146,7 @@ async function show(data,i) {
     // comment
     for (let r of data) {
         //id thread
-        var id = r.id;
+        let id = r.id;
         //get comment comment
         const response = await fetch(api_comment+id,{
             method: 'GET',
@@ -155,17 +155,17 @@ async function show(data,i) {
             'Content-Type': 'application/json'
             }
         });
-        var com = await response.json();
+        let com = await response.json();
         ////////////
 
         tab += `<div id="content"> 
             
             <div id="category">${r.category}</div>
             <div id="title">${r.title} </div>
-            <div id="name">${r.usrname}</div> 
+            <div id="name">Created by: ${r.usrname}</div> 
             <div id="date">${r.creat}</div> 
             <br>
-            <div id="commentus">`
+            <div id="commentus">Comments: `
 
         for(let s of com) {
             tab+=`<div id="comContent">${s.content}</div>
@@ -176,10 +176,10 @@ async function show(data,i) {
         //dapetin spesifik thread yang di komen di r.id
         tab+=    `</div>
             <br>Your Comment:</br>    
-            <input type="text" id="urcom+${r.id}" name="comment">
+            <textarea id="urcom+${r.id}" name="comment"></textarea>
             <br>
             <br>
-            <button onClick="submitComment(${r.id})"> Submit</button>
+            <button id="send" onClick="submitComment(${r.id})">Send</button>
             </div>    
             </div>`;
     }

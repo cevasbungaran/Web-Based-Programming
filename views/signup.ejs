@@ -14,13 +14,16 @@
 <body id="bod">
     <h1>KusKus</h1>
     <form method="post" action="/signup">
-        <input type="text" name="username" id="username" placeholder="Username" value="">
+        <input type="text" name="username" id="username" placeholder="Username" value="" required>
         <br>
         <br>
-        <input type="password" name="password" id="pass" placeholder="Password" value="">
+        <input type="text" name="nickname" id="nickname" placeholder="Nickname" value="" required>
         <br>
         <br>
-        <input type="password" name="repassword" id="repass" placeholder="Retype Password" value="">
+        <input type="text" name="email" id="email" placeholder="Email" value="" required>
+        <br>
+        <br>
+        <input type="password" name="password" id="pass" placeholder="Password" value="" required>
         <br>
         <br>
         <button>Sign Up</button>

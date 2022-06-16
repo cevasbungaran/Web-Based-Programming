@@ -1,14 +1,14 @@
 const api_url =
     "http://localhost:8082/myhomepageget/";
 
-var slice = 1
-var val = ""
+let slice = 1
+let val = ""
 
 
 async function getapi(url, slice, val) {
 
-    var searchtag = val;
-    var name = localStorage.getItem('user')
+    let searchtag = val;
+    let name = localStorage.getItem('user')
     const response = await fetch(api_url + name + '/' + searchtag, {
         method: 'GET',
         headers: {
@@ -17,9 +17,9 @@ async function getapi(url, slice, val) {
         }
     });
 
-    var data = await response.json();
-    var dat_len = data.length
-    var pag = dat_len / 5
+    let data = await response.json();
+    let dat_len = data.length
+    let pag = dat_len / 5
     pagination(pag + 1, data)
 
     if (response) {
@@ -30,7 +30,7 @@ async function getapi(url, slice, val) {
 }
 
 function search() {
-    var val = document.getElementById('search').value
+    let val = document.getElementById('search').value
 
     getapi(api_url, 1, val)
 }
@@ -39,9 +39,9 @@ getapi(api_url, slice, val);
 
 function pagination(length, data) {
     let tab = ``;
-    var val = document.getElementById('search').value
+    let val = document.getElementById('search').value
     for (let i = 1; i < length; i++) {
-        tab += `<button onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+        tab += `<button id="page" onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
 
     }
 
