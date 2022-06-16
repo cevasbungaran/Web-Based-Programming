@@ -22,6 +22,9 @@ header a:hover{
     padding-top: 0px;
     margin-top: 0px;
 }
+#h1page{
+    text-align: center;
+}
 #content{
     border: solid;
     border-radius: 2px;

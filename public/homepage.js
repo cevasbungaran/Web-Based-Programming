@@ -177,6 +177,8 @@ async function show(data,i) {
         tab+=    `</div>
             <br>Your Comment:</br>    
             <input type="text" id="urcom+${r.id}" name="comment">
+            <br>
+            <br>
             <button onClick="submitComment(${r.id})"> Submit</button>
             </div>    
             </div>`;
