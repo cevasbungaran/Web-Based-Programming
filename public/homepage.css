@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 header {
     display: flex;
     justify-content: space-around;
@@ -5,6 +9,11 @@ header {
     padding-left: 0px;
     margin-left: 0px;
     padding-top: 10px;
+    background-color: antiquewhite;
+}
+
+.konten {
+    margin: 8px;
 }
 
 header a {
@@ -58,7 +67,7 @@ header a:hover {
     padding-top: 5px;
 }
 
-#send{
+#send {
     background: #FFFFFF;
     border: 2px solid #000000;
     width: 80px;

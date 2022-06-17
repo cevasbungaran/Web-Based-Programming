@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 header {
     display: flex;
     justify-content: space-around;
@@ -5,7 +9,7 @@ header {
     padding-left: 0px;
     margin-left: 0px;
     padding-top: 10px;
-    /* background-image: url(/headerback.jpg); */
+    background-color: antiquewhite;
 }
 
 header a {
@@ -18,6 +22,11 @@ header a {
 header a:hover {
     color: rgb(157, 138, 63);
 }
+
+.konten {
+    margin: 8px;
+}
+
 
 #namaWeb {
     font-family: 'Italianno', cursive;
