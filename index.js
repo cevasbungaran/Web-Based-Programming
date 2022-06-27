@@ -21,8 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname+ '/public'));
 //
 app.use(express.static(path.resolve('views')));
-//img
-app.use(express.static(__dirname+ '/img'));
 //
 app.listen(PORT, () =>{
     console.log(`Listening on port ${PORT}`);
