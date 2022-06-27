@@ -1,14 +1,14 @@
 const api_url =
-    "http://localhost:8082/myhomepageget/";
+    "myhomepageget/";
 
 let slice = 1
 let val = ""
 
 
-async function getapi(url, slice, val) {
+async function getthread(url, slice, val) {
 
     let searchtag = val;
-    let name = localStorage.getItem('user')
+    let name = localStorage.getItem('username')
     const response = await fetch(api_url + name + '/' + searchtag, {
         method: 'GET',
         headers: {
@@ -20,7 +20,7 @@ async function getapi(url, slice, val) {
     let data = await response.json();
     let dat_len = data.length
     let pag = dat_len / 5
-    pagination(pag + 1, data)
+    pagination(pag, data)
 
     if (response) {
         hideloader();
@@ -32,16 +32,16 @@ async function getapi(url, slice, val) {
 function search() {
     let val = document.getElementById('search').value
 
-    getapi(api_url, 1, val)
+    getthread(api_url, 1, val)
 }
 
-getapi(api_url, slice, val);
+getthread(api_url, slice, val);
 
 function pagination(length, data) {
     let tab = ``;
     let val = document.getElementById('search').value
     for (let i = 1; i < length; i++) {
-        tab += `<button id="page" onClick="getapi('${api_url}','${i}','${val}')"> ${i}</button>`
+        tab += `<button id="page" onClick="getthread('${api_url}','${i}','${val}')"> ${i}</button>`
 
     }
 
@@ -67,7 +67,7 @@ function show(data, i) {
                 <td>${r.title} </td>
                 <td>${r.category}</td>
                 <td>${r.usrname}</td> 
-                <td>${r.creat}</td>          
+                <td>${r.creat.substring(0,10)}</td>          
                 </tr>`;
     }
 

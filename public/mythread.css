@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: #CBF1F5;
 }
 
 header {
@@ -9,7 +10,7 @@ header {
     padding-left: 0px;
     margin-left: 0px;
     padding-top: 10px;
-    background-color: antiquewhite;
+    background-color: #71C9CE;
 }
 
 header a {
@@ -20,7 +21,7 @@ header a {
 }
 
 header a:hover {
-    color: rgb(157, 138, 63);
+    color: #D3EBCD;
 }
 
 .konten {
@@ -54,7 +55,7 @@ header a:hover {
 
 #threadArray td,
 #threadArray th {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 10px;
 }
 

@@ -3,7 +3,6 @@ import path from 'path'
 import mysql from 'mysql'
 import {fileURLToPath} from 'url';
 import bodyParser from 'body-parser'
-import fileUpload from 'express-fileupload';
 
 
 const app = express();
@@ -96,7 +95,8 @@ app.post('/subcomment', (req,res) => {
         connection.query(sql, function (err, result) {
            if (err) throw err;  
            console.log("1 record inserted");
-         });  z
+         });
+         res.send('success')
   
 })
 
@@ -130,7 +130,7 @@ app.get('/homepageget/*', (req,res) => {
     if (req.params[0]==undefined){
         value='';
     }
-    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%')`
+    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%' or thread_categories.name like '%${value}%' order by created_date desc)`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         res.send(result)
@@ -153,7 +153,7 @@ app.get('/myhomepageget/*', (req,res) => {
    if (req.params[0]==undefined){
         value='';
     }
-    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%' and users.name='${name}')`
+    let sql = `(SELECT threads.id as id,threads.title as title, users.name as usrname, thread_categories.name as category, threads.created_date as creat from threads inner join users on threads.author_id=users.id inner join thread_categories on thread_categories.id=threads.category_id where title like '%${value}%' and users.name='${name}' or thread_categories.name like '%${value}%' order by created_date desc)`
     connection.query(sql, function (err, result) {
         if (err) throw err;;
         res.send(result)

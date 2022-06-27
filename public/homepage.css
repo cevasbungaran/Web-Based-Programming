@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #D3EBCD;
 }
 
 header {
@@ -9,7 +10,7 @@ header {
     padding-left: 0px;
     margin-left: 0px;
     padding-top: 10px;
-    background-color: antiquewhite;
+    background-color: #AEDBCE;
 }
 
 .konten {
@@ -18,13 +19,13 @@ header {
 
 header a {
     text-decoration: none;
-    color: black;
+    color: #635666;
     padding-top: 5px;
     font-size: 15pt;
 }
 
 header a:hover {
-    color: rgb(157, 138, 63);
+    color: #839AA8;
 }
 
 #namaWeb {
@@ -32,15 +33,17 @@ header a:hover {
     font-size: 50pt;
     padding-top: 0px;
     margin-top: 0px;
+    color: #635666;
 }
 
 #h1page {
     text-align: center;
+    color: #635666;
 }
 
 #submit {
     background: #FFFFFF;
-    border: 2px solid #000000;
+    border: 2px solid #635666;
     width: 90px;
     height: 30px;
     border-radius: 5px;
@@ -53,7 +56,7 @@ header a:hover {
 #content {
     border: solid;
     border-radius: 3px;
-    border-color: black;
+    border-color: #635666;
     margin-bottom: 30px;
     padding: 5px;
 }
@@ -69,7 +72,7 @@ header a:hover {
 
 #send {
     background: #FFFFFF;
-    border: 2px solid #000000;
+    border: 2px solid #635666;
     width: 80px;
     height: 30px;
     border-radius: 5px;
@@ -97,7 +100,7 @@ header a:hover {
 
 #page {
     background-color: white;
-    border: solid black 1px;
+    border: solid #635666 1px;
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
